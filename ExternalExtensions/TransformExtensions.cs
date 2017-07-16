@@ -34,7 +34,7 @@ namespace DTEasings {
 
 		private static IEnumerator ShakeCoroutine(Transform transform, float magnitude, float duration, EaseType easeType) {
 			Vector3 offset;
-			for (float time = 0.0f; time < duration; time += Time.deltaTime) {
+			for (float time = 0.0f; time < duration; time += Time.unscaledDeltaTime) {
 				float currentMagnitude = Mathf.Lerp(magnitude, 0.0f, Easings.Interpolate(time / duration, easeType));
 				Vector3 transformedRight = transform.rotation * Vector3.right;
 				Vector3 transformedUp = transform.rotation * Vector3.up;
