@@ -36,5 +36,15 @@ namespace DTEasings {
 				finishedCallback.Invoke();
 			}
 		}
+
+		public static IEnumerator DoEaseCoroutine(float duration, EaseType easeType, Action<float> lerpCallback) {
+			for (float time = 0.0f; time <= duration; time += Time.deltaTime) {
+				float p = Easings.Interpolate(time / duration, easeType);
+				lerpCallback.Invoke(p);
+				yield return null;
+			}
+
+			lerpCallback.Invoke(1.0f);
+		}
 	}
 }
