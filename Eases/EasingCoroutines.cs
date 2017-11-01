@@ -24,7 +24,7 @@ namespace DTEasings {
 			}
 		}
 
-		public static IEnumerator DoLerpCoroutine(float duration, Action<float> lerpCallback, Action finishedCallback) {
+		public static IEnumerator DoLerpCoroutine(float duration, Action<float> lerpCallback, Action finishedCallback = null) {
 			for (float time = 0.0f; time <= duration; time += Time.deltaTime) {
 				lerpCallback.Invoke(time / duration);
 				yield return null;
